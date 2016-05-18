@@ -21,6 +21,38 @@ namespace Snake
             _y = y;
             _sym = sym;
         }
+
+        /// <summary>
+        /// Конструктор для формирования точки
+        /// </summary>
+        /// <param name="p">Точка</param>
+        public Point(Point p)
+        {
+            _x = p.X;
+            _y = p.Y;
+            _sym = p.Sym;
+        }
+
+        /// <summary>
+        /// Перемещение точку на заданное число шагов в выбранном направлении
+        /// </summary>
+        /// <param name="offset">Смещение</param>
+        /// <param name="direction">Направление</param>
+        public void Move(int offset, Direction direction)
+        {
+            if (direction == Direction.Right)
+                _x += offset;
+
+            if (direction == Direction.Left)
+                _x -= offset;
+
+            if (direction == Direction.Up)
+                _y += offset;
+
+            if (direction == Direction.Down)
+                _y -= offset;
+        }
+
         /// <summary>
         /// Получить и/или установить значение координаты X
         /// </summary>
@@ -66,6 +98,12 @@ namespace Snake
             Console.SetCursorPosition(_x, _y);
             Console.WriteLine(_sym);
             Console.ForegroundColor = ConsoleColor.Gray;
+
+        }
+
+        public override string ToString()
+        {
+            return String.Format("x = {0}, y = {1}, sym = {2}", X, Y, Sym);
 
         }
     }
