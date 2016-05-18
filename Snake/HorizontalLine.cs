@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Snake
 {
-    internal class HorizontalLine : Figure
+    internal class HorizontalLine
     {
+        private List<Point> _pointList;
 
         /// <summary>
         /// Конструктор для формирования горизонтальной линии
@@ -14,18 +16,32 @@ namespace Snake
         /// <param name="sym">Символ для формирования линии</param>
         public HorizontalLine(int xLeft, int xRight, int y, char sym)
         {
-            if (xLeft > xRight)
-                HelperMethods.Swap(ref xLeft, ref xRight);
 
-            PointList = new List<Point>();
+
+            _pointList = new List<Point>();
             for (int x = xLeft; x <= xRight; x++)
             {
                 Point p = new Point(x, y, sym);
-                PointList.Add(p);
+                _pointList.Add(p);
             }
 
         }
 
 
+        public void Draw()
+        {
+            foreach (var point in _pointList)
+            {
+                point.Draw();
+            }
+        }
+
+        public void Draw(ConsoleColor color)
+        {
+            foreach (var point in _pointList)
+            {
+                point.Draw(color);
+            }
+        }
     }
 }
