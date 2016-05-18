@@ -12,6 +12,12 @@ namespace Snake
             Snake snake = new Snake(p, 5, Direction.Right);
             snake.Draw(ConsoleColor.Red);
 
+            for (int i = 0; i < 58; i++)
+            {
+                snake.Move();
+                snake.Draw(ConsoleColor.Red);
+            }
+
             Console.ReadKey();
         }
 
