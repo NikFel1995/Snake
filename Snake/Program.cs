@@ -11,7 +11,6 @@ namespace Snake
             horizontalLine.Draw(ConsoleColor.Cyan);
 
 
-
             Console.ReadKey();
         }
 
