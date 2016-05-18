@@ -7,21 +7,13 @@ namespace Snake
     {
         private static void Main()
         {
-            Point p1 = new Point
-            {
-                x = 1,
-                y = 3,
-                sym = '*'
-            };
+            Point p1 = new Point(1, 3, '*');
             p1.Draw();
 
-            Point p2 = new Point
-            {
-                x = 4,
-                y = 5,
-                sym = '#'
-            };
+            Point p2 = new Point(4, 5, '#');
             p2.Draw();
+
+            new Point(10,6,'P').Draw();
 
             Console.ReadKey();
         }

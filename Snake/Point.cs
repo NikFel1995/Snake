@@ -2,16 +2,23 @@
 
 namespace Snake
 {
-    class Point
+    internal class Point
     {
-        public int x;
-        public int y;
-        public char sym;
+        private readonly int _x;
+        private readonly int _y;
+        private readonly char _sym;
+
+        public Point(int x, int y, char sym)
+        {
+            _x = x;
+            _y = y;
+            _sym = sym;
+        }
 
         public void Draw()
         {
-            Console.SetCursorPosition(x, y);
-            Console.WriteLine(sym);
+            Console.SetCursorPosition(_x, _y);
+            Console.WriteLine(_sym);
         }
     }
 }
