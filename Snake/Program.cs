@@ -6,6 +6,20 @@ namespace Snake
     {
         private static void Main()
         {
+            DrawFrame();
+
+            Point p = new Point(4, 5, '*');
+            Snake snake = new Snake(p, 5, Direction.Right);
+            snake.Draw(ConsoleColor.Red);
+
+            Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Нарисовать рамку
+        /// </summary>
+        private static void DrawFrame()
+        {
             HorizontalLine upLine = new HorizontalLine(0, 78, 0, '+');
             HorizontalLine downLine = new HorizontalLine(0, 78, 24, '+');
 
@@ -17,14 +31,6 @@ namespace Snake
             downLine.Draw(ConsoleColor.Cyan);
             leftLine.Draw(ConsoleColor.Cyan);
             rightLine.Draw(ConsoleColor.Cyan);
-
-
-
-            Console.ReadKey();
         }
-
-
-
-
     }
 }
