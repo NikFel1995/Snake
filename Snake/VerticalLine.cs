@@ -5,7 +5,13 @@ namespace Snake
 {
     class VerticalLine : Figure
     {
-
+        /// <summary>
+        /// Конструктор для формирования вертикальной линии
+        /// </summary>
+        /// <param name="yUp">Координата верхней точки по оси Y</param>
+        /// <param name="yDown">Координата нижней точки по оси Y</param>
+        /// <param name="x">Координата по оси Y</param>
+        /// <param name="sym">Символ для формирования линии</param>
         public VerticalLine(int yUp, int yDown, int x, char sym)
         {
             PointList = new List<Point>();
