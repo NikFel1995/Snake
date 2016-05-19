@@ -47,10 +47,10 @@ namespace Snake
                 _x -= offset;
 
             if (direction == Direction.Up)
-                _y += offset;
+                _y -= offset;
 
             if (direction == Direction.Down)
-                _y -= offset;
+                _y += offset;
         }
 
         /// <summary>
