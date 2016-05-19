@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Snake
 {
@@ -12,13 +13,16 @@ namespace Snake
             Snake snake = new Snake(p, 5, Direction.Right);
             snake.Draw(ConsoleColor.Red);
 
-            for (int i = 0; i < 58; i++)
+            while (true)
             {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.Move(key.Key);
+                }
+                Thread.Sleep(100);
                 snake.Move();
-                snake.Draw(ConsoleColor.Red);
             }
-
-            Console.ReadKey();
         }
 
         /// <summary>
