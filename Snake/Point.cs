@@ -47,10 +47,10 @@ namespace Snake
                 _x -= offset;
 
             if (direction == Direction.Up)
-                _y += offset;
+                _y -= offset;
 
             if (direction == Direction.Down)
-                _y -= offset;
+                _y += offset;
         }
 
         /// <summary>
@@ -101,10 +101,23 @@ namespace Snake
 
         }
 
+        /// <summary>
+        /// Перегруженный метод ToString
+        /// </summary>
+        /// <returns>Строку с данными о точке (координата по х и y, символ точки)</returns>
         public override string ToString()
         {
             return String.Format("x = {0}, y = {1}, sym = {2}", X, Y, Sym);
 
+        }
+
+        /// <summary>
+        /// Стирание точки
+        /// </summary>
+        public void Clear()
+        {
+            _sym = ' ';
+            Draw();
         }
     }
 }
