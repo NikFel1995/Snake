@@ -59,7 +59,11 @@ namespace Snake
         public int X
         {
             get { return _x; }
-            set { _x = value; }
+            set
+            {
+                if (_x >= 0)
+                    _x = value;
+            }
         }
         /// <summary>
         /// Получить и/или установить значение координаты Y
@@ -67,7 +71,11 @@ namespace Snake
         public int Y
         {
             get { return _y; }
-            set { _y = value; }
+            set
+            {
+                if (_y >= 0)
+                    _y = value;
+            }
         }
 
         /// <summary>
@@ -118,6 +126,17 @@ namespace Snake
         {
             _sym = ' ';
             Draw();
+        }
+
+        /// <summary>
+        /// Пересечение точек
+        /// </summary>
+        /// <param name="p">точка перечечения</param>
+        /// <returns>True -если есть пересечение, иначе - false</returns>
+        public bool IsHit(Point p)
+        {
+            return p._x == _x &&
+                   p._y == _y;
         }
     }
 }
