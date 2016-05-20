@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading;
+using System.Collections.Generic;
 
 namespace Snake
 {
@@ -7,39 +7,38 @@ namespace Snake
     {
         private static void Main()
         {
-            DrawFrame();
+            //  DrawFrame();
+
+            VerticalLine verticalLineLine = new VerticalLine(0, 10, 5, '%');
+            HorizontalLine horizontalLine = new HorizontalLine(0, 5, 6, '%');
+            Draw(verticalLineLine);
+            Draw(horizontalLine);
+
 
             Point p = new Point(4, 5, '*');
-            Snake snake = new Snake(p, 5, Direction.Right);
-            snake.Draw();
+            Figure fsnake = new Snake(p, 4, Direction.Right);
+            Draw(fsnake);
+            Snake snake = (Snake)fsnake;
 
-            FoodCreator foodCreator = new FoodCreator(80, 25, '$');
-            Point food = foodCreator.CreateFood();
-            food.Draw();
-
-
-            while (true)
+            List<Figure> figures = new List<Figure>
             {
-                if (snake.Eat(food))
-                {
-                    food = foodCreator.CreateFood();
-                    food.Draw();
-                }
-                else
-                {
-                    snake.Move();
-                }
-
-                Thread.Sleep(100);
-
-                if (Console.KeyAvailable)
-                {
-                    ConsoleKeyInfo key = Console.ReadKey();
-                    snake.Move(key.Key);
-                }
-                Thread.Sleep(100);
-                snake.Move();
+                fsnake,
+                verticalLineLine,
+                horizontalLine
+            };
+        
+            foreach (var figure in figures)
+            {
+                figure.Draw();
             }
+
+
+            Console.ReadKey();
+        }
+
+        private static void Draw(Figure figure)
+        {
+            figure.Draw();
         }
 
         /// <summary>
