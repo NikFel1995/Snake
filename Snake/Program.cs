@@ -7,7 +7,9 @@ namespace Snake
     {
         private static void Main()
         {
-            DrawFrame();
+
+            Walls walls = new Walls(80, 25);
+            walls.Draw();
 
             Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 5, Direction.Right);
@@ -15,15 +17,23 @@ namespace Snake
 
             FoodCreator foodCreator = new FoodCreator(80, 25, '$');
             Point food = foodCreator.CreateFood();
-            food.Draw();
+            food.Draw(ConsoleColor.Red);
 
 
             while (true)
             {
+                if (walls.IsHit(snake) || snake.IsHitTail())
+                {
+                    Console.Clear();
+                    Console.WriteLine("GAME OVER!\r\nTry again...");
+                    Thread.Sleep(1000);
+                    break;
+                }
+
                 if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
-                    food.Draw();
+                    food.Draw(ConsoleColor.Red);
                 }
                 else
                 {
@@ -42,22 +52,5 @@ namespace Snake
             }
         }
 
-        /// <summary>
-        /// Нарисовать рамку
-        /// </summary>
-        private static void DrawFrame()
-        {
-            HorizontalLine upLine = new HorizontalLine(0, 78, 0, '+');
-            HorizontalLine downLine = new HorizontalLine(0, 78, 24, '+');
-
-
-            VerticalLine leftLine = new VerticalLine(0, 24, 0, '+');
-            VerticalLine rightLine = new VerticalLine(0, 24, 78, '+');
-
-            upLine.Draw(ConsoleColor.Cyan);
-            downLine.Draw(ConsoleColor.Cyan);
-            leftLine.Draw(ConsoleColor.Cyan);
-            rightLine.Draw(ConsoleColor.Cyan);
-        }
     }
 }
