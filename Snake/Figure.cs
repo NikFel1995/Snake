@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Snake
 {
@@ -31,6 +32,16 @@ namespace Snake
             {
                 point.Draw(color);
             }
+        }
+
+        public bool IsHit(Figure figure)
+        {
+            return PointList.Any(figure.IsHit);
+        }
+
+        private bool IsHit(Point point)
+        {
+            return PointList.Any(p => p.IsHit(point));
         }
     }
 }
