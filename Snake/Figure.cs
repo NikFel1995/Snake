@@ -13,7 +13,7 @@ namespace Snake
         /// <summary>
         /// Вывод вертикальной линии на экран
         /// </summary>
-        public void Draw()
+        public virtual void Draw()
         {
             foreach (var point in PointList)
             {
@@ -25,7 +25,7 @@ namespace Snake
         /// Вывод вертикальной линии на экран
         /// <param name="color">Цвет линии</param>
         /// </summary>
-        public void Draw(ConsoleColor color)
+        public virtual void Draw(ConsoleColor color)
         {
             foreach (var point in PointList)
             {
