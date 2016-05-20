@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Snake
 {
@@ -26,6 +27,13 @@ namespace Snake
 
         }
 
+        public override void Draw()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
 
+            base.Draw();
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }
